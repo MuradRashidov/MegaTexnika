@@ -20,7 +20,7 @@ export async function getTechniques() {
 }
 
 const HomeCategories = () => {
-  const [techniques, setTechniques] = useState<ITechnique[]>([]);
+ const [techniques, setTechniques] = useState<ITechnique[]>([]);
 
   useEffect(() => {
     getTechniques().then((techs) => {

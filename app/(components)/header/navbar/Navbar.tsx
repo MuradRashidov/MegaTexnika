@@ -44,6 +44,16 @@ const Navbar = () => {
             href:"/contact",
             name:"Əlaqə"
         },
+        {
+            id:7,
+            href:"/register",
+            name:"Register"
+        },
+        {
+            id:8,
+            href:"/login",
+            name:"Login"
+        },
     ]
     const pathname = usePathname();
     console.log(pathname);

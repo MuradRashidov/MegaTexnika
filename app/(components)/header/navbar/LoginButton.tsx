@@ -5,17 +5,19 @@ import React from 'react'
 
 const LoginButton = () => {
   const {data:session} = useSession();
+  console.log(session?.user);
+  
   if(session && session.user){
-    return <>
+    return <Box sx={{display:"flex",alignItems:"center"}}>
     <img style={{width:25,height:25,borderRadius:"50%"}} alt="user" src={session.user.image ?? ""}/>
     <Button onClick={() => signOut()}>Sign out</Button>
-    </>
+    </Box>
   }
-  console.log(session?.user)
+  console.log(session?.user?.name)
   return (
     <Box sx={{display:"flex", flexDirection:"row",gap:1,cursor:"pointer"}}>
         <img style={{width:25,height:25}} alt="dsf" src="https://shorturl.at/ovwyD"/>
-        <Button onClick={() => signIn()}>Sign in</Button>
+        <Button onClick={() => signIn("google")}>Sign in</Button>
 
     </Box>
   )

@@ -22,8 +22,8 @@ const HomeWhyUsResponsive = () => {
     position:"relative"
   }}
 >
-<Box sx={{width:"100%",height:"100%",backgroundColor:"black",position:"absolute",opacity:0.4}}></Box>
-<Stack sx={{paddingY:4,gap:3}}>
+<Box sx={{width:"100%",height:"100%",backgroundColor:"black",position:"absolute",opacity:0.4,zIndex:-1}}></Box>
+<Stack sx={{paddingY:4,gap:3,color:"#FFFFFF"}}>
                     <Typography variant="h3">Niyə bizi seçməlisiniz</Typography>
                     <Typography>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                       Lorem Ipsum has been the industry

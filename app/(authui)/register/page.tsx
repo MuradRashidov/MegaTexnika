@@ -1,8 +1,11 @@
 "use client"
 import React, { useState } from 'react';
-import { Box, Container, TextField, Button } from '@mui/material';
+import { Box, Container, TextField, Button, Typography } from '@mui/material';
 import axios from 'axios'; 
 import { useRouter } from 'next/navigation';
+import { Google } from '@mui/icons-material';
+import { signIn } from 'next-auth/react';
+import Link from 'next/link';
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -40,7 +43,7 @@ const RegisterForm = () => {
 
   return (
     <Box>
-      <Container>
+      <Container sx={{width:"60%",marginY:10}}>
         <form onSubmit={handleSubmit}>
           <TextField
             name="email"
@@ -70,10 +73,20 @@ const RegisterForm = () => {
             margin="normal"
             required
           />
-          <Button type="submit" variant="contained" color="primary">
-            Register
+          <Button fullWidth type="submit" variant="contained" color="primary">
+            Qeydiyyatdan keç
           </Button>
+          
+          
         </form>
+        
+        <Button onClick={(e)=>{e.preventDefault,signIn("google"),router.push("/")}} startIcon={<Google/>} sx={{marginTop:2,backgroundColor:"orangeRed"}}  fullWidth variant="contained">
+            Google ilə davam edin
+          </Button>
+          <Box sx={{display:"flex",alignItems:"center",justifyContent:"center",marginY:1,gap:2}}>
+          <Typography>Hesabnız var?</Typography>
+          <Link href="/login">Daxil ol</Link>
+        </Box>
       </Container>
     </Box>
   );
