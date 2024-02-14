@@ -1,107 +1,102 @@
 "use client"
-import { addTechnique } from '@/redux/features/techniqueSlice';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Button, TextField, FormControl, InputLabel, Select, MenuItem, makeStyles } from '@mui/material';
+import { addTechnique } from '@/redux/features/techniqueSlice';
+import { useAppDispatch } from '@/redux/store';
 
-function TechniqueForm() {
-  const dispatch = useDispatch();
+
+
+const AddTechniqueForm = () => {
+  const dispatch = useAppDispatch();
   const [formData, setFormData] = useState({
     name: '',
     categoryName: '',
     imageUrl: '',
-    dailyRent: '',
-    monthlyRent: '',
-    productionYear: ''
+    dailyRent: 0,
+    monthlyRent: 0,
+    productionYear: 0
   });
 
   const handleChange = (e:any) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Dispatch addTechnique action with formData
     dispatch(addTechnique(formData));
-    // Clear form fields after submission if needed
     setFormData({
       name: '',
       categoryName: '',
       imageUrl: '',
-      dailyRent: '',
-      monthlyRent: '',
-      productionYear: ''
+      dailyRent: 0,
+      monthlyRent: 0,
+      productionYear: 0
     });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="categoryName">Category Name:</label>
-        <input
-          type="text"
-          id="categoryName"
-          name="categoryName"
-          value={formData.categoryName}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="imageUrl">Image URL:</label>
-        <input
-          type="text"
-          id="imageUrl"
-          name="imageUrl"
-          value={formData.imageUrl}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="dailyRent">Daily Rent:</label>
-        <input
-          type="number"
-          id="dailyRent"
-          name="dailyRent"
-          value={formData.dailyRent}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="monthlyRent">Monthly Rent:</label>
-        <input
-          type="number"
-          id="monthlyRent"
-          name="monthlyRent"
-          value={formData.monthlyRent}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="productionYear">Production Year:</label>
-        <input
-          type="text"
-          id="productionYear"
-          name="productionYear"
-          value={formData.productionYear}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit">Add Technique</button>
+      <TextField
+        required
+        fullWidth
+        name="name"
+        label="Name"
+        value={formData.name}
+        onChange={handleChange}
+      />
+      <TextField
+        required
+        fullWidth
+        name="categoryName"
+        label="Category Name"
+        value={formData.categoryName}
+        onChange={handleChange}
+      />
+      <TextField
+        required
+        fullWidth
+        name="imageUrl"
+        label="Image URL"
+        value={formData.imageUrl}
+        onChange={handleChange}
+      />
+      <TextField
+        required
+        fullWidth
+        type="number"
+        name="dailyRent"
+        label="Daily Rent"
+        value={formData.dailyRent}
+        onChange={handleChange}
+      />
+      <TextField
+        required
+        fullWidth
+        type="number"
+        name="monthlyRent"
+        label="Monthly Rent"
+        value={formData.monthlyRent}
+        onChange={handleChange}
+      />
+      <TextField
+        required
+        fullWidth
+        type="text"
+        name="productionYear"
+        label="Production Year"
+        value={formData.productionYear}
+        onChange={handleChange}
+      />
+      <Button type="submit" variant="contained" color="primary">
+        Add Technique
+      </Button>
     </form>
   );
-}
+};
 
-export default TechniqueForm;
+export default AddTechniqueForm;

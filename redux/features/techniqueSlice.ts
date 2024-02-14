@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
 import ITechnique from '@/interfaces/data';
-
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { AsyncThunkAction } from '@reduxjs/toolkit';
 
 
 interface TechniquesState {
@@ -16,14 +16,14 @@ const initialState: TechniquesState = {
   error: null,
 };
 
-export const fetchTechniques = createAsyncThunk('techniques/fetchTechniques', async () => {
+export const fetchTechniques = createAsyncThunk<ITechnique[],void>('techniques/fetchTechniques', async () => {
   try {
     const response = await axios.get<ITechnique[]>('http://localhost:3000/api/techniques');
     return response.data;
   } catch (error:any) {
-    console.log(error.message)
+    console.log(error.message);
+    throw error;
   }
- 
 });
 
 export const addTechnique = createAsyncThunk('techniques/addTechnique', async (newTechnique: ITechnique) => {
@@ -31,9 +31,9 @@ export const addTechnique = createAsyncThunk('techniques/addTechnique', async (n
     const response = await axios.post<ITechnique>('http://localhost:3000/api/techniques', newTechnique);
     return response.data;
   } catch (error:any) {
-    console.log(error.message)
+    console.log(error.message);
+    throw error;
   }
- 
 });
 
 const techniquesSlice = createSlice({
@@ -54,13 +54,13 @@ const techniquesSlice = createSlice({
         state.error = action.error.message ?? 'An error occurred';
       })
       .addCase(addTechnique.fulfilled, (state, action) => {
-       state.techniques.push(action.payload);
-})
-.addCase(addTechnique.rejected, (state, action) => {
-  state.status = 'failed';
-  state.error = action.payload as string; // veya action.error.message
-});
-
+        state.status = 'succeeded';
+        state.techniques.push(action.payload);
+      })
+      .addCase(addTechnique.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message ?? 'An error occurred';
+      });
   },
 });
 
