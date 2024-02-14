@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTechniques, selectTechniques, selectTechniquesStatus, selectTechniquesError } from '@/redux/features/techniqueSlice';
 import { useEffect } from 'react';
+import { useAppDispatch } from '@/redux/store';
 
 // export async function getTechniques() {
 //   try {
@@ -30,7 +31,7 @@ const HomeCategories = () => {
 //       console.log(1)
 //     });
 //   }, []);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const techniques = useSelector(selectTechniques);
   const status = useSelector(selectTechniquesStatus);
   const error = useSelector(selectTechniquesError);
