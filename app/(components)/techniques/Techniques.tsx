@@ -4,11 +4,12 @@ import { Box, Container, Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import ITechnique from '@/interfaces/data'
 import HomeTechnique from '../home/techniques/HomeTechnique'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { fetchTechniques, selectTechniques, selectTechniquesStatus, selectTechniquesError } from '@/redux/features/techniqueSlice';
+import { useAppDispatch } from '@/redux/store'
 
 const TechniquesComponent = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const techniques = useSelector(selectTechniques);
     const status = useSelector(selectTechniquesStatus);
     const error = useSelector(selectTechniquesError);
@@ -22,7 +23,7 @@ console.log(techniques)
         <Container>
         <Typography sx={{marginY:5}}>Texnikalar</Typography>
         <Grid container spacing={5}>
-  {techniques.map((technique: ITechnique, index) => (
+  {techniques.map((technique: ITechnique, index:any) => (
      
       <Grid key={technique._id} item xs={12} sm={6} md={3}>
         <HomeTechnique {...technique}/>
