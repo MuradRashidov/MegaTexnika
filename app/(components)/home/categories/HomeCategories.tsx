@@ -3,31 +3,41 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import HomeCategory from './HomeCategory';
 import ITechnique from '@/interfaces/data';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchTechniques, selectTechniques, selectTechniquesStatus, selectTechniquesError } from '@/redux/features/techniqueSlice';
+import { useEffect } from 'react';
 
-export async function getTechniques() {
-  try {
-    const response = await fetch("http://localhost:3000/api/techniques");
-    if (!response.ok) {
-      throw new Error("Failed to fetch techniques");
-    }
-    const techs = await response.json();
-    return techs;
-  } catch (error) {
-    console.error("Error fetching techniques:", error);
-    return []; // Hata durumunda boş bir dizi döndür
-  }
-}
+// export async function getTechniques() {
+//   try {
+//     const response = await fetch("http://localhost:3000/api/techniques");
+//     if (!response.ok) {
+//       throw new Error("Failed to fetch techniques");
+//     }
+//     const techs = await response.json();
+//     return techs;
+//   } catch (error) {
+//     console.error("Error fetching techniques:", error);
+//     return []; // Hata durumunda boş bir dizi döndür
+//   }
+// }
 
 const HomeCategories = () => {
- const [techniques, setTechniques] = useState<ITechnique[]>([]);
+//  const [techniques, setTechniques] = useState<ITechnique[]>([]);
 
-  useEffect(() => {
-    getTechniques().then((techs) => {
-      setTechniques(techs);
-      console.log(1)
-    });
-  }, []);
+//   useEffect(() => {
+//     getTechniques().then((techs) => {
+//       setTechniques(techs);
+//       console.log(1)
+//     });
+//   }, []);
+  const dispatch = useDispatch();
+  const techniques = useSelector(selectTechniques);
+  const status = useSelector(selectTechniquesStatus);
+  const error = useSelector(selectTechniquesError);
+useEffect(() => {
+  dispatch(fetchTechniques());
+}, [dispatch]);
+console.log(techniques)
 
   return (
     <Box>

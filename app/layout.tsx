@@ -1,4 +1,5 @@
 import Providers from "./providers/Providers"
+import RTProvider from "./providers/RTProvider"
 
 export const metadata = {
   title: 'MegaTexnika',
@@ -12,9 +13,11 @@ export default function Rootlayout({
 }) {
   return (
     <html lang="en">
+      <RTProvider>
      <Providers>
      <body>{children}</body>
      </Providers>
+     </RTProvider>
     </html>
   )
 }

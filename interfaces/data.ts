@@ -1,5 +1,5 @@
 interface ITechnique{
-    _id:string,
+    _id?:string,
     name:string,
     categoryName:string,
     imageUrl:string,

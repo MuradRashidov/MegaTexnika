@@ -4,18 +4,20 @@ import { Box, Container, Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import HomeTechnique from './HomeTechnique'
 import Link from 'next/link'
-import { getTechniques } from '../categories/HomeCategories'
 import ITechnique from '@/interfaces/data'
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchTechniques, selectTechniques, selectTechniquesStatus, selectTechniquesError } from '@/redux/features/techniqueSlice';
 
 const HomeTechniques = () => {
-  const [techniques, setTechniques] = useState<ITechnique[]>([]);
 
-  useEffect(() => {
-    getTechniques().then((techs) => {
-      setTechniques(techs);
-      console.log(1)
-    });
-  }, []);
+  const dispatch = useDispatch();
+  const techniques = useSelector(selectTechniques);
+  const status = useSelector(selectTechniquesStatus);
+  const error = useSelector(selectTechniquesError);
+useEffect(() => {
+  dispatch(fetchTechniques());
+}, [dispatch]);
+console.log(techniques);
   return (
     <Box sx={{marginY:4}}>
         <Container>
