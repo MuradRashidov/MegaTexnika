@@ -26,7 +26,7 @@ const RegisterForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/users", formData);
+      const response = await axios.post("https://megatexnika-nine.vercel.app/api/users", formData);
       console.log("User registered successfully:", response.data);
       router.push("/")
     } catch (error) {
