@@ -36,7 +36,7 @@ const Navbar = () => {
         },
         {
             id:5,
-            href:"/blog",
+            href:"/createtechnique",
             name:"Blog"
         },
         {
