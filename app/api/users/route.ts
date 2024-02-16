@@ -23,5 +23,5 @@ export async function POST(request:NextRequest){
       return NextResponse.json({message:error.message},{status:500})
    }
    //await User.create({userName:name,email,role:"user"});
-   return NextResponse.json({message:"User registered"},{status:201})
+  // return NextResponse.json({message:"User registered"},{status:201})
 }

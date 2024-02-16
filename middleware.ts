@@ -9,7 +9,6 @@ export async function middleware(request: NextRequest) {
 
     if (publicPath && token) {
         return NextResponse.redirect(new URL("/",request.nextUrl));
-        console.log(token);
         
     }
     if (!publicPath && !token) {

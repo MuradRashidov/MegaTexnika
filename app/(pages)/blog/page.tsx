@@ -1,82 +1,17 @@
-"use client"
-import React, { useState } from 'react';
-import { Box, Container, TextField, Button } from '@mui/material';
-import axios from 'axios'; 
-import { useRouter } from 'next/navigation';
+import BlogBanner from '@/app/(components)/blog/BlogBanner'
+import BlogNews from '@/app/(components)/blog/BlogNews'
+import BlogResponsiveBanner from '@/app/(components)/blog/BlogResponsiveBanner'
+import { Box,Container } from '@mui/material'
+import React from 'react'
 
-const RegisterForm = () => {
-  const router = useRouter();
-  const [formData, setFormData] = useState({
-    email: '',
-    name: '',
-    password: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3000/api/users", formData);
-      console.log("User registered successfully:", response.data);
-      router.push("/")
-    } catch (error) {
-      console.error("Error registering user:", error);
-    }
-    finally{
-      setFormData({
-        email: '',
-        name: '',
-        password: '',
-      })
-    }
-  };
-
+const page = () => {
   return (
-    <Box>
-      <Container>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            name="email"
-            label="Email"
-            value={formData.email}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            required
-          />
-          <TextField
-            name="name"
-            label="Username"
-            value={formData.name}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            required
-          />
-          <TextField
-            name="password"
-            label="Password"
-            type="password"
-            value={formData.password}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-            required
-          />
-          <Button type="submit" variant="contained" color="primary">
-            Register
-          </Button>
-        </form>
-      </Container>
-    </Box>
-  );
-};
+   <Box>
+      <Box sx={{display:{xs:"none",md:"block"}}}><BlogBanner/></Box>
+      <Box sx={{display:{xs:"block",md:"none"}}}><BlogResponsiveBanner/></Box>
+      <BlogNews/>
+   </Box>
+  )
+}
 
-export default RegisterForm;
+export default page
