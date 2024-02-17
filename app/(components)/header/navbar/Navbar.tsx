@@ -71,7 +71,7 @@ const Navbar = () => {
                
                 <Image alt="logo" width={200} height={40} src="/images/logo.png"/>
             </Box>
-            <Box  sx={{display:{
+            <Box sx={{display:{
                 width:"60%",
                 xs:"none",
                 md:"flex",

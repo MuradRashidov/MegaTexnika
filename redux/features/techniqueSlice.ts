@@ -37,7 +37,7 @@ export const addTechnique = createAsyncThunk('techniques/addTechnique', async (n
   }
 });
 
-const techniquesSlice = createSlice({
+const techniquesSlice:any = createSlice({
   name: 'techniques',
   initialState,
   reducers: {},

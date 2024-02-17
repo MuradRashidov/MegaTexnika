@@ -1,11 +1,12 @@
 import { Box, Container, Link, Stack, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
+import ResponsiveHomeBanner from './ResponsiveHomeBanner'
 
 const HomeBanner = () => {
   return (
     <Box>
-        <Container>
+        <Container sx={{display:{xs:"none",md:"flex"}}}>
             <Stack sx={{
                 paddingY:3,
                 flexDirection:{
@@ -38,6 +39,9 @@ const HomeBanner = () => {
 
             </Stack>
         </Container>
+        <Box sx={{display:{xs:"block",md:"none"}}}>
+          <ResponsiveHomeBanner/>
+        </Box>
     </Box>
   )
 }

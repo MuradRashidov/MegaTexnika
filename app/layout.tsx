@@ -1,5 +1,7 @@
+import { ThemeProvider } from "@mui/material"
 import Providers from "./providers/Providers"
 import RTProvider from "./providers/RTProvider"
+import theme from "@/theme/theme"
 
 export const metadata = {
   title: 'MegaTexnika',
@@ -13,11 +15,13 @@ export default function Rootlayout({
 }) {
   return (
     <html lang="en">
+      <ThemeProvider theme={theme}>
       <RTProvider>
      <Providers>
      <body>{children}</body>
      </Providers>
      </RTProvider>
+     </ThemeProvider>
     </html>
   )
 }

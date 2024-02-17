@@ -1,36 +1,43 @@
-import { Box, Container, Stack, Typography } from '@mui/material'
-import Image from 'next/image'
-import Link from 'next/link'
+import { Box, Link, Typography } from '@mui/material'
 import React from 'react'
-import ResponsiveTested from './ResponsiveTested'
 
-const Tested = () => {
+const ResponsiveTested = () => {
   return (
     <Box>
-       <Container  sx={{marginY:4,display:{xs:"none",md:"block"}}}>
-        <Stack flexDirection="row" gap={3}>
-         <Box sx={{flex:1,display:{
-            xs:"none",
-            md:"flex"
-         },alignItems:"flex-end"}}>
-           <Image alt="Mega Texnika" src="/images/home/tested_1.png" width={280} height={550} layout="responsive"/> 
-        </Box>   
         <Box sx={{
-            flex:2,
-            paddingX:5,
+            width:"auto",
+            minHeight:550,
+            backgroundImage:"url('/images/home/tested_2.png')",
+            objectFit:"cover",
+            backgroundRepeat:"no-repeat",
+            backgroundSize:"cover",
+            position:"relative",
+            zIndex:-1
+        }}>
+            <Box sx={{
+            width:"100%",
+            minHeight:"100%",
+            backgroundColor:"black",
+            position:"absolute",
+            opacity:0.7,
+            zIndex:2,
+            display:"flex",
+            alignItems:"center"
+        }}>
             
-            }}>
-           <Image alt="Mega Texnika" src="/images/home/tested_2.png" width={100} height={50} layout="responsive"/> 
-           <Box sx={{
-              paddingX:5,
+            <Box sx={{
+              paddingX:2,
               paddingTop:5,
               display:"flex",
               flexDirection:"column",
-              gap:3
+              justifyContent:"center",
+              gap:3,
+              color:"white",
+              zIndex:2
            }}>
             <Typography sx={{
                 fontWeight:700
-            }} variant="h3" component="h3">
+            }} variant="h4" component="h3">
               Mega Texnika-da sınaqdan keçirilmiş texnikalar
             </Typography>
             <Typography>
@@ -42,7 +49,8 @@ const Tested = () => {
                 textDecoration:"none",
                 padding:8,
                 color:"#353535",
-                fontSize:"calc(5px + 0.8vw)",
+                backgroundColor:"#FFC01F",
+                fontSize:"calc(5px + 0.9vw)",
                 fontWeight:700,
                 display:"flex",
                 justifyContent:"center",
@@ -53,13 +61,10 @@ const Tested = () => {
             }} href="/about">Haqqımızda</Link>
            </Box>
         </Box>
-        </Stack>
-        </Container> 
-        <Box sx={{display:{xs:"block",md:"none"}}}>
-            <ResponsiveTested/>
+      
         </Box>
     </Box>
   )
 }
 
-export default Tested
+export default ResponsiveTested

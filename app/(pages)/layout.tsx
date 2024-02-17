@@ -23,9 +23,9 @@ export default function RootLayout({
     <>
         <Header/>
         <Box sx={{backgroundColor:""}}>
-          <ThemeProvider theme={theme}>
+         
             {children}
-          </ThemeProvider>
+         
         </Box>
         <Footer/>
         </>

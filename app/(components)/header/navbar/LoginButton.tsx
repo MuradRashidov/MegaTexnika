@@ -8,16 +8,16 @@ const LoginButton = () => {
   console.log(session?.user);
   
   if(session && session.user){
-    return <Box sx={{display:"flex",alignItems:"center"}}>
+    return <Box sx={{display:"flex",alignItems:"center",gap:1}}>
     <img style={{width:25,height:25,borderRadius:"50%"}} alt="user" src={session.user.image ?? ""}/>
-    <Button onClick={() => signOut()}>Sign out</Button>
+    <Button variant="outlined" onClick={() => signOut()}>Sign out</Button>
     </Box>
   }
   console.log(session?.user?.name)
   return (
     <Box sx={{display:"flex", flexDirection:"row",gap:1,cursor:"pointer"}}>
         <img style={{width:25,height:25}} alt="dsf" src="https://shorturl.at/ovwyD"/>
-        <Button onClick={() => signIn("google")}>Sign in</Button>
+        <Button variant="outlined" color="primary" onClick={() => signIn("google")}>Sign in</Button>
 
     </Box>
   )

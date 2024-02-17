@@ -13,7 +13,7 @@ const HomeNews = () => {
               news.map((singleNews,index)=>{
                 return(
                   index<4? (
-                    <Grid key={singleNews.id} item xs={12} sm={6} md={3}>
+                    <Grid color="primary" key={singleNews.id} item xs={12} sm={6} md={3}>
                     <HomeSingleNews {...singleNews}/>
                   </Grid>
                   )
