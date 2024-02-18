@@ -43,12 +43,31 @@ console.log(techniques)
   return (
     <Box>
       <Container>
-        <Typography sx={{ marginY: 5 }}>Kateqoriyalar</Typography>
-        <Grid container spacing={5}>
+        <Typography sx={{ marginY: {xs:2,sm:5},color:"#596C72",fontSize:30 }}>Kateqoriyalar</Typography>
+        <Grid justifyContent="center" sx={{marginY:2}} container spacing={5}>
           {techniques.map((technique: ITechnique) => (
-            <Grid key={technique._id} item xs={12} sm={6} md={3}>
+            <>
+            <Grid sx={{display:{xs:"none",sm:"grid"}}} key={technique._id} item xs={12} sm={6} md={3}>
               <HomeCategory {...technique}/>
             </Grid>
+            <Grid item xs={6} sx={{display:{xs:"flex",sm:"none"},justifyContent:"center"}}>
+                <Typography
+                  sx={{
+                    height: 60,
+                    width:"100%",
+                    border: "1px solid",
+                    color: "#596C72",
+                    fontSize: "18",
+                    boxShadow: "2px 2px 0px rgba(0, 0, 0, 0.2)",
+                    display:"flex",
+                    justifyContent:"center",
+                    alignItems:"center"
+                  }}
+                >
+                {technique.categoryName}
+                </Typography>
+             </Grid>
+            </>
           ))}
         </Grid>
       </Container>

@@ -50,7 +50,7 @@ const ResponsiveTested = () => {
                 padding:8,
                 color:"#353535",
                 backgroundColor:"#FFC01F",
-                fontSize:"calc(5px + 0.9vw)",
+                fontSize:"calc(11px + 0.9vw)",
                 fontWeight:700,
                 display:"flex",
                 justifyContent:"center",
