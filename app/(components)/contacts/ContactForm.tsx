@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 const ContactForm = () => {
   return (
-   <Box>
+   <Box sx={{paddingY:3}}>
     <Typography sx={{marginY:3}}>Bizə yazın!</Typography>
       <Grid spacing={2} container>
                         <Grid item xs={12} lg={6}>

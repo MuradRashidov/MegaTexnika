@@ -11,10 +11,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { signOut } from 'next-auth/react';
 
 const style = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    
     width: "100%",
     height:"100%",
     bgcolor: 'background.paper',
@@ -68,8 +65,8 @@ const links:ILink[] = [
 ]
 
   return (
-    <Box sx={{backgroundColor:"white",marginTop:5}}>
-      <Button onClick={handleOpen}><MenuIcon/></Button>
+    <Box sx={{backgroundColor:"white",display:"flex",justifyContent:"center",alignItems:"center"}}>
+      <Button sx={{display:"flex",alignItems:"center"}} onClick={handleOpen}><MenuIcon/></Button>
       <Modal
         sx={style}
         open={open}

@@ -1,32 +1,32 @@
-import { Box, Container, Stack, Typography } from '@mui/material'
-import Image from 'next/image'
+import { Box, Typography } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
-import ResponsiveLeaseTerms from './ResponsiveLeaseTerms'
 
-const LeaseTerms = () => {
+const ResponsiveLeaseTerms = () => {
   return (
     <Box>
-       <Container sx={{marginY:4}}>
-        <Stack justifyContent="space-between" flexDirection="row" gap={3}>
-         <Box sx={{flex:1,display:{
-            xs:"none",
-            md:"flex"
-         },
-         alignItems:"start",
-         justifyContent:"flex-end",
-         flexDirection:"column",
-         }}>
-          <Typography variant="h4" sx={{marginBottom:8,fontWeight:700}}>İcarə şərtləri</Typography>
-           <Image alt="Mega Texnika" src="/images/leaseterms/leaseterms_2.png" width={280} height={550} layout="responsive"/> 
-        </Box>   
         <Box sx={{
-            display:{xs:"none",md:"block"},
-            flex:2,
-            paddingLeft:5,
+            width: 'auto',
+            minHeight: 300,
+            backgroundImage: "url('/images/leaseterms/leaseterms_1.png')",
+            objectFit: 'cover',
+            backgroundPosition: 'center',
+            zIndex: 5,
+            color:"white",
+            position:"relative",
+            display:"flex",
+            flexDirection:"column",
+            alignItems:"center",
             
-            }}>
-           <Image alt="Mega Texnika" src="/images/leaseterms/leaseterms_1.png" width={100} height={50} layout="responsive"/> 
+        }}>
+            <Box sx={{
+                width:"100%",
+                height:"100%",
+                backgroundColor:"black",
+                position:"absolute",
+                opacity:0.4,
+                zIndex:-1
+            }}></Box>
            <Box sx={{
               paddingX:5,
               paddingTop:5,
@@ -34,6 +34,7 @@ const LeaseTerms = () => {
               flexDirection:"column",
               gap:3
            }}>
+            <Typography variant="h4" sx={{marginBottom:1,fontWeight:700}}>İcarə şərtləri</Typography>
             <Typography>
                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             Lorem Ipsum has been the industry standard dummy text ever since the 1500s,
@@ -59,13 +60,8 @@ const LeaseTerms = () => {
             }} href="/about">Haqqımızda</Link>
            </Box>
         </Box>
-        </Stack>
-        </Container> 
-        <Box sx={{display:{xs:"flex",md:"none"},}}>
-         <ResponsiveLeaseTerms/>
-        </Box>
     </Box>
   )
 }
 
-export default LeaseTerms
+export default ResponsiveLeaseTerms

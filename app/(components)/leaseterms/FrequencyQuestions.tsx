@@ -63,7 +63,7 @@ export default function FrequencyQuestions() {
      <Box sx={{marginY:4,display:"flex",justifyContent:"center"}}>
         <Typography sx={{fontWeight:700}} variant="h4">Tez-tez verilən suallar</Typography>
      </Box>
-     <Container sx={{width:"80%"}}>
+     <Container sx={{width:{xs:"100%",md:"80%"}}}>
         {questions.map((question,index)=>{
             return(
                 <Accordion key={index}>
@@ -72,10 +72,10 @@ export default function FrequencyQuestions() {
           aria-controls="panel2-content"
           id="panel2-header"
         >
-          <Typography>{question.question}</Typography>
+          <Typography sx={{fontSize:12,fontWeight:400}}>{question.question}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography sx={{fontSize:12,fontWeight:400}}>
             {question.answer}
           </Typography>
         </AccordionDetails>

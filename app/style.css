@@ -7,3 +7,6 @@
 .active {
  border:1px solid orange
 }
+.lightFont{
+  font: weight 400px;
+}
