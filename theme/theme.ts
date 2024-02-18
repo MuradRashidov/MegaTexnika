@@ -9,6 +9,9 @@ const theme = createTheme({
       main: '#FFC01F',
       
     },
+    secondary:{
+      main:"#596C72"
+    }
   },
   components: {
     MuiTypography: {

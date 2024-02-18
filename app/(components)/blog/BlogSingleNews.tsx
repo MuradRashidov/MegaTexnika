@@ -4,6 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 
 const BlogSingleNews = ({id,title,description,publishDate,imageUrl}:INews) => {
+ 
   return (
     <Box sx={{paddingTop:2}}>
        <Image alt="texnika" src={imageUrl} width={220} height={150} layout='responsive'/>

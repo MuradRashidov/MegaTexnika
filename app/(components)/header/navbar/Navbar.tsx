@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { inherits } from 'util'
 import LoginButton from './LoginButton'
+import MobileMenu from './MobileMenu'
 
 const Navbar = () => {
     interface ILink{
@@ -56,7 +57,7 @@ const Navbar = () => {
         },
     ]
     const pathname = usePathname();
-    console.log(pathname);
+    //console.log(pathname);
     
   return (
     <Box sx={{my:2}}>
@@ -97,6 +98,9 @@ const Navbar = () => {
                 md:"flex"
             }}}>
                 <LoginButton/>
+            </Box>
+            <Box sx={{display:{xs:"block",md:"none"}}}>
+                <MobileMenu/>
             </Box>
         </Container>
     </Box>
