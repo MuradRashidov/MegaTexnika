@@ -29,7 +29,7 @@ const TechniqueById = ({techniqueId}:any) => {
                                             onClick={()=>{setImgUrl(technique.imageUrl)}} 
                                             src={technique.imageUrl || ""} 
                                             alt={technique.name || ""} 
-                                            width={75} 
+                                            width={72} 
                                             height={120}/>
                                     </Box>
                         }
