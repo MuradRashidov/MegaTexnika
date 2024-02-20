@@ -24,7 +24,9 @@ const TechniqueById = ({techniqueId}:any) => {
                 <Stack sx={{flex:1,flexDirection:{xs:"row",md:"column"}}}>
                     {techniques.map((technique:ITechnique,index:number)=>{
                         if(index<5){
-                             return <Box className={technique.imageUrl == imgUrl?"active":""} key={technique._id}>
+                             return <Box 
+                                sx={{display:"flex",justifyContent:"center"}} 
+                                className={technique.imageUrl == imgUrl?"active":""} key={technique._id}>
                                             <Image 
                                             onClick={()=>{setImgUrl(technique.imageUrl)}} 
                                             src={technique.imageUrl || ""} 

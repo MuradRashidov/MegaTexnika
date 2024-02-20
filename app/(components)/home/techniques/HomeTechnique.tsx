@@ -1,6 +1,6 @@
 import ITechnique from '@/interfaces/data'
 import { Category } from '@mui/icons-material'
-import { Box, Link as MuiLink, Typography } from '@mui/material'
+import { Box, Button, Link as MuiLink, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 import Link  from "next/link"
@@ -43,7 +43,11 @@ const HomeTechnique = ({_id,name,categoryName,imageUrl,dailyRent,monthlyRent,pro
                 display:"flex",
                 justifyContent:"center"
             }}>
-                <MuiLink>Icarə et</MuiLink>
+                <Link style={{color:"#353535",textDecoration:"none",display:"flex",justifyContent:"center"}} href={`techniques/${_id}`}>
+                    <Button color="primary" variant="contained">
+                       Icarə et
+                    </Button>
+                </Link>
             </Box>
        </Box>
     </Box>
