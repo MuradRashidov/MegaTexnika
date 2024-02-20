@@ -13,7 +13,7 @@ const TechniqueById = ({techniqueId}:any) => {
    
     let searchedTechnique:ITechnique | undefined = techniques.find(technique=>technique._id==techniqueId);
     const [imgUrl,setImgUrl] = useState(searchedTechnique?.imageUrl)
-    console.log("asdf",searchedTechnique);
+    //console.log("asdf",searchedTechnique);
     
 
   return (
@@ -87,7 +87,11 @@ const TechniqueById = ({techniqueId}:any) => {
                     </Box>
                     </Box>
                     <Box>
-                        <Button sx={{width:"100%",color:"#353535",fontWeight:700}} variant="contained" color="primary">Günlük icarə et</Button>
+                    <Link style={{textDecoration:"none",color:"#353535",fontWeight:700}} href="https://buy.stripe.com/test_28obML5bK2mQd8cbII">
+                        <Button sx={{width:"100%"}} variant="contained" color="primary">
+                            Günlük icarə et
+                        </Button>
+                    </Link>
                     </Box>
                 </Box>
             </Box>
