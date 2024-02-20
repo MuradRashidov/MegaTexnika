@@ -21,10 +21,17 @@ const TechniqueById = ({techniqueId}:any) => {
         <Container>
             <Typography>Ana səhifə | Texnikalar | {searchedTechnique?.name}</Typography>
             <Box sx={{display:"flex",marginY:3,flexDirection:{xs:"column",md:"row"}}}>
-                <Stack sx={{flex:1,flexDirection:{xs:"row",md:"column//"}}}>
+                <Stack sx={{flex:1,flexDirection:{xs:"row",md:"column"}}}>
                     {techniques.map((technique:ITechnique,index:number)=>{
                         if(index<5){
-                             return <Image onClick={()=>{setImgUrl(technique.imageUrl)}} key={technique._id} src={technique.imageUrl || ""} alt={technique.name || ""} width={80} height={120}/>
+                             return <Box className={technique.imageUrl == imgUrl?"active":""} key={technique._id}>
+                                            <Image 
+                                            onClick={()=>{setImgUrl(technique.imageUrl)}} 
+                                            src={technique.imageUrl || ""} 
+                                            alt={technique.name || ""} 
+                                            width={75} 
+                                            height={120}/>
+                                    </Box>
                         }
                         else{
                             return null
