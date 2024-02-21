@@ -14,7 +14,26 @@ const TechniqueById = ({techniqueId}:any) => {
     let searchedTechnique:ITechnique | undefined = techniques.find(technique=>technique._id==techniqueId);
     const [imgUrl,setImgUrl] = useState(searchedTechnique?.imageUrl)
     //console.log("asdf",searchedTechnique);
-    
+    async function handleClick() {
+        try {
+            const response = await fetch('/api/payment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ searchedTechnique })
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data?.session?.url); 
+                window.location.href =data?.session?.url;
+            } else {
+                throw new Error('Payment failed'); 
+            }
+        } catch (error:any) {
+            console.error('Error:', error.message); 
+        }
+    }
 
   return (
     <Box>
@@ -87,8 +106,8 @@ const TechniqueById = ({techniqueId}:any) => {
                     </Box>
                     </Box>
                     <Box>
-                    <Link style={{textDecoration:"none",color:"#353535",fontWeight:700}} href="https://buy.stripe.com/test_28obML5bK2mQd8cbII">
-                        <Button sx={{width:"100%"}} variant="contained" color="primary">
+                    <Link style={{textDecoration:"none",color:"#353535",fontWeight:700}} href="#">
+                        <Button onClick={handleClick} sx={{width:"100%"}} variant="contained" color="primary">
                             Günlük icarə et
                         </Button>
                     </Link>
