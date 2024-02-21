@@ -15,8 +15,8 @@ const initialState: TechniquesState = {
   status: 'idle',
   error: null,
 };
-//const endPoint = "https://megatexnika-nine.vercel.app";
-const endPoint = "http://localhost:3000";
+const endPoint = "https://megatexnika-nine.vercel.app";
+//const endPoint = "http://localhost:3000";
 export const fetchTechniques = createAsyncThunk<ITechnique[],void>('techniques/fetchTechniques', async () => {
   try {
     const response = await axios.get<ITechnique[]>(`${endPoint}/api/techniques`);
