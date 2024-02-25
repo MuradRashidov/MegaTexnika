@@ -7,8 +7,12 @@ import ITechnique from '@/interfaces/data';
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
+import OrderForm from './OrderForm';
 //import techniques from '@/data/data';
 const TechniqueById = ({techniqueId}:any) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
     const techniques:ITechnique[] = useSelector(selectTechniques);
    
     let searchedTechnique:ITechnique | undefined = techniques.find(technique=>technique._id==techniqueId);
@@ -40,7 +44,10 @@ const TechniqueById = ({techniqueId}:any) => {
         <Container>
             <Typography>Ana səhifə | Texnikalar | {searchedTechnique?.name}</Typography>
             <Box sx={{display:"flex",marginY:3,flexDirection:{xs:"column",md:"row"}}}>
-                <Stack sx={{flex:1,flexDirection:{xs:"row",md:"column"}}}>
+                <Stack sx={{flex:1,flexDirection:{xs:"row",md:"column",position:"relative"}}}>
+                    <Box sx={{position:"absolute",width:"100%"}}>
+                        <OrderForm searchedTechnique={searchedTechnique} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose}/>
+                    </Box>
                     {techniques.map((technique:ITechnique,index:number)=>{
                         if(index<5){
                              return <Box 
@@ -106,11 +113,12 @@ const TechniqueById = ({techniqueId}:any) => {
                     </Box>
                     </Box>
                     <Box>
-                    <Link style={{textDecoration:"none",color:"#353535",fontWeight:700}} href="#">
-                        <Button onClick={handleClick} sx={{width:"100%"}} variant="contained" color="primary">
+                   
+                        {/* <Button onClick={handleClick} sx={{width:"100%,color:"#353535",fontWeight:700"}} variant="contained" color="primary">
                             Günlük icarə et
-                        </Button>
-                    </Link>
+                        </Button> */}
+                        <Button onClick={()=>handleOpen()}>Günlük icarə et</Button>
+                    
                     </Box>
                 </Box>
             </Box>
