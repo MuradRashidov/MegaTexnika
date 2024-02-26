@@ -1,9 +1,9 @@
 "use client"
 import React, { useState } from 'react';
-import { Box, Container, TextField, Button, Typography } from '@mui/material';
+import { Box, Container, TextField, Button, Typography, InputAdornment, IconButton } from '@mui/material';
 import axios from 'axios'; 
 import { useRouter } from 'next/navigation';
-import { Google } from '@mui/icons-material';
+import { EmailOutlined, Google, LockOutlined } from '@mui/icons-material';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 
@@ -39,33 +39,52 @@ const LoginForm = () => {
   };
 
   return (
-    <Box>
-      <Container sx={{width:"60%",marginY:10}}>
+    <Box sx={{display:"flex",alignItems:"center",height:"100vh"}}>
+      <Container sx={{width:{xs:"100%",md:"60%"},marginY:10}}>
         <form onSubmit={handleSubmit}>
           <TextField
             name="email"
             label="Email"
+            placeholder="example@gmail.com"
             value={formData.email}
             onChange={handleChange}
             fullWidth
             margin="normal"
             required
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <IconButton>
+                    <EmailOutlined />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           <TextField
             name="password"
-            label="Password"
+            label="Şifrə"
             type="password"
             value={formData.password}
             onChange={handleChange}
             fullWidth
             margin="normal"
             required
+            placeholder="Şifrə"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <IconButton>
+                    <LockOutlined />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
-          <Button fullWidth type="submit" variant="contained" color="primary">
+          <Button sx={{marginY:2,color:"#ffffff",fontWeight:600}} fullWidth type="submit" variant="contained" color="primary">
             Daxil ol
           </Button>
-          <Box sx={{display:"flex",alignItems:"center",justifyContent:"center",marginY:1,gap:2}}>
-          <Typography>Hesabnız yoxdur?</Typography>
+          <Box sx={{display:"flex",alignItems:"center",justifyContent:"center",marginY:2,gap:2}}>
           <Link href="/register">Qeydiyyatdan keç</Link>
         </Box>
           
