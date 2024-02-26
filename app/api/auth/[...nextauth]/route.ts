@@ -26,7 +26,7 @@ const handler = NextAuth({
                     if(!passwordsMatch){
                         return null;
                     }
-                    console.log(user);
+                    // console.log(user);
                     
                     return user;
                 } catch (error) {
@@ -44,17 +44,22 @@ const handler = NextAuth({
        strategy:"jwt"
     },
     callbacks: {
-        async jwt({token,user}) {
+        async jwt({token,user}:{token:any,user:any}) {
+            console.log(user);
+
             if(user){
                 token.email = user.email;
-                token.name = user.name
+                token.name = user.userName || user.name;
+                token.role = user.role
+
             }
             return token
         },
         async session({session,token}:{session:any, token:any}) {
             if(session.user){
                 session.user.email = token.email,
-                session.user.name = token.name
+                session.user.name = token.name,
+                session.user.role = token.role
             }
             return session
         },
@@ -65,11 +70,13 @@ const handler = NextAuth({
                     await connectDB();
                     const excistedUser = await User.findOne({email});
                     if(excistedUser){
-                        return user
+                        console.log("********************************")
+                        console.log(excistedUser)
+                        return excistedUser
                     }
                     const newUser = {userName:name,email,role:"admin"};
                     await User.create(newUser);
-                    return user;
+                    return newUser;
                 } catch (error) {
                  console.log(error);
                  

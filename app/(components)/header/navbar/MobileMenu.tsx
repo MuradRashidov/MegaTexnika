@@ -5,26 +5,29 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Menu, MenuItem, Stack } from '@mui/material';
+import { Container, Menu, MenuItem, Stack } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
+import { Close } from '@mui/icons-material';
 
 const style = {
-    
     width: "100%",
     height:"100%",
     bgcolor: 'background.paper',
-    marginTop:5,
-    gap:3
+    gap:3,
   };
   
 
 export default function MobileMenu() {
+  const {data:session} = useSession();
+  //console.log(session?.user);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(!open);
   const handleClose = () => setOpen(!open);
   const pathname = usePathname();
+  const avatarUrl = "https://shorturl.at/hCGPV";
+  const profileImage = session?.user?.image || avatarUrl
   interface ILink{
     id:number,
     href:string,
@@ -74,9 +77,20 @@ const links:ILink[] = [
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-
+          
+         
            
-           <Stack sx={style}>
+          <Stack sx={style}>
+          <Container sx={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:3,padding:6, gap:4}}>
+            <Box>
+            <img style={{width:50,height:50,zIndex:3,borderRadius:"50%",marginBottom:1}} src={profileImage} alt="profileImage"/>
+            <Typography sx={{fontWeight:500}} color="primary">{session?.user?.name}</Typography>
+            </Box>
+            <Button sx={{paddingY:1}} color="secondary" variant="outlined" onClick={()=>{handleClose()}}>
+            <Close color="secondary"/>
+            </Button>
+            
+          </Container>
            {
              links.map(link=>{
                return <Link 
@@ -104,13 +118,15 @@ const links:ILink[] = [
                 >
                 <Button 
                     onClick={() => signOut()}
-                    sx={{width:"70%",display:"flex",justifyContent:"center"}} 
+                    sx={{width:"75%",display:"flex",justifyContent:"center"}} 
                     variant="contained" color="secondary" 
                     endIcon={<LogoutIcon/>}>
                         Çıxış
                 </Button>
                 </Box>
            </Stack>
+          
+          
            
       </Modal>
     </Box>
