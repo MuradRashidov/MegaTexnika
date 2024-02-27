@@ -1,5 +1,8 @@
 *{
   margin: 0;
+  /* margin-bottom: 0 !important;
+  margin-top: 0 !important; */
+  
   padding: 0;
   box-sizing: border-box;
 }
@@ -9,4 +12,41 @@
 }
 .lightFont{
   font: weight 400px;
+}
+.nLink{
+  text-decoration: none;
+  color:"#353535";
+  padding: 10px 0;
+  border:1px solid;
+  width: 150px;
+  display:flex;
+  justify-content: center;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: all 0.5s;
+}
+.nLink:hover{
+  background-color: gray;
+  color: white;
+}
+.nLink_2{
+  text-decoration: none;
+  color:"#353535";
+  background-color:"#FFC01F";
+  padding: 10px 0;
+  width: 150px;
+  display:flex;
+  justify-content: center;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: all 0.5s;
+}
+.nLink_3{
+  text-decoration: none;
+  color:"#353535";
+  padding: 10px 15px;
+  font-weight: 700;
+  transition: all 0.5s;
+  margin:0;
+  border:0;
 }

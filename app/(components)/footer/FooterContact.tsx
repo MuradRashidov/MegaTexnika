@@ -11,10 +11,10 @@ const FooterContact = () => {
         
       }}
     >
-        <Typography component='p'>Fətəli Xan Xoyski 111A, Bakı Azərbaycan</Typography>
-        <Typography component='p'>+994(51) 123 45 67</Typography>
-        <Typography component='p'>+994(12) 123 45 67</Typography>
-        <Typography component='p'>info@lmegatexnika.az</Typography>
+        <Typography sx={{fontSize:14,fontWeight:400,color:"#353535"}}>Fətəli Xan Xoyski 111A, Bakı Azərbaycan</Typography>
+        <Typography sx={{fontSize:14,fontWeight:400,color:"#353535"}}>+994(51) 123 45 67</Typography>
+        <Typography sx={{fontSize:14,fontWeight:400,color:"#353535"}}>+994(12) 123 45 67</Typography>
+        <Typography sx={{fontSize:14,fontWeight:400,color:"#353535"}}>info@lmegatexnika.az</Typography>
     </Box>
   )
 }

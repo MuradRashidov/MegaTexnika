@@ -7,7 +7,7 @@ const HomeNews = () => {
   return (
     <Box>
         <Container>
-        <Typography>Xəbərlər</Typography>
+        <Typography sx={{fontSize:30,fontWeight:600,color:"#596C72",marginBottom:2}}>Yeniliklər</Typography>
         <Grid container spacing={5}>
             {
               news.map((singleNews,index)=>{

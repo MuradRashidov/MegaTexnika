@@ -23,7 +23,7 @@ console.log(techniques);
   return (
     <Box sx={{marginY:4}}>
         <Container>
-        <Typography sx={{marginY:5}}>Texnikalar</Typography>
+        <Typography sx={{marginY: {xs:2},color:"#596C72",fontSize:30,fontWeight:700}}>Texnikalar</Typography>
         <Grid container spacing={5}>
   {techniques.map((technique: ITechnique, index:number) => (
     index < 4 ? (
@@ -35,19 +35,7 @@ console.log(techniques);
 </Grid>
 
         <Box sx={{display:"flex",justifyContent:"center"}}>
-        <Link style={{
-                backgroundColor:"#FFC01F",
-                textDecoration:"none",
-                padding:8,
-                color:"#353535",
-                fontSize:"calc(5px + 0.8vw)",
-                fontWeight:700,
-                display:"flex",
-                justifyContent:"center",
-                alignItems:"center",
-                borderRadius:30,
-                width:"calc(100px + 5vw)"
-            }} href="/techniques">Hamısına Bax</Link>
+        <Link  className="nLink_2" href="/techniques">Hamısına Bax</Link>
         </Box>
         </Container>
     </Box>

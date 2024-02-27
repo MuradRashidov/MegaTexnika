@@ -44,7 +44,13 @@ const ResponsiveHomeBanner = () => {
                     Lorem Ipsum has been the industry standard dummy text ever since the 1500s,
                     when an unknown printer took a galley of type and scrambled
                     </Typography>
-                    <Link sx={{cursor:"pointer",backgroundColor:"#FFC01F",zIndex:5,fontSize:"calc(11px + 0.9vw)"}} color="primary">Ətraflı</Link>
+                    
+                      <Button sx={{width:120}}  color="primary" variant="contained">
+                      <Link style={{padding:0}} className="nLink_3">Ətraflı</Link>
+                      </Button>
+                    
+                      
+                    
                   </Box>
         </Box>
        

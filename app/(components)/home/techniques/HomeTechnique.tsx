@@ -1,18 +1,27 @@
 import ITechnique from '@/interfaces/data'
 import { Category } from '@mui/icons-material'
-import { Box, Button, Link as MuiLink, Typography } from '@mui/material'
+import { Box, Button, Divider, Link as MuiLink, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 import Link  from "next/link"
 
 const HomeTechnique = ({_id,name,categoryName,imageUrl,dailyRent,monthlyRent,productionYear}:ITechnique) => {
   return (
-    <Box sx={{paddingTop:2}}>
+    <Box sx={{
+        paddingTop:2,
+        boxShadow: "0px 0px 10px rgba(128, 128, 128, 0.3)" ,
+        fontWeight:600,
+        transition:"all 0.5s",
+        "&:hover": { 
+        transform: "scale(1.02)" 
+       }
+    }}>
             <Link href={`/techniques/${_id}`}>
   
     <Image alt={name} src={imageUrl} width={220} height={150} layout='responsive' />
  
 </Link>
+<Divider/>
        <Box sx={{
             display:"flex",
             flexDirection:"column",

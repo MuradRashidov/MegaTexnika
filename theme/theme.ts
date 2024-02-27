@@ -4,6 +4,7 @@ import { Montserrat } from 'next/font/google';
 const monserrat = Montserrat({ subsets: ['latin'] })
 
 const theme = createTheme({
+
   palette: {
     primary: {
       main: '#FFC01F',
@@ -26,6 +27,8 @@ const theme = createTheme({
         },
       }
     },
+    
+    
     MuiLink: {
       styleOverrides: {
         root: {

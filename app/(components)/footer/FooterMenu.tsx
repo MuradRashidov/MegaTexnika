@@ -43,16 +43,23 @@ const FooterMenu = () => {
     <Box sx={{maxWidth:200}}>
         {
                     links.map(link=>{
-                        return <Link  style={{
+
+                        return <Box sx={{display:"flex",justifyContent:{xs:"center",md:"flex-start"}
+                    }}  key={link.id}>
+                            <Link  style={{
+                            width:"min-content",
                             textDecoration:"none",
-                            color:"black",
+                            color:"#353535",
+                            fontWeight:400,
                             display:"flex",
-                            flexDirection:"column"
+                            flexDirection:"column",
+                            fontSize:16
                             
                             }} 
-                    key={link.id} 
-                    href={link.href}>{link.name}</Link>
+                    
+                    href={link.href}>{link.name}</Link></Box> 
                     })
+                        
                 }
     </Box>
   )

@@ -21,8 +21,12 @@ const CopyRight = () => {
         marginTop: 4
     }}
     >
-        <Typography>© 2022 Megatexnika / Müəllif hüquqları</Typography>
-        <Typography>Design by JEDAİ</Typography>
+        <Typography sx={{color:"#353535",fontSize:12,fontWeight:400}}>© 2022 Megatexnika / Müəllif hüquqları</Typography>
+        <Box sx={{display:"flex",gap:1}}>
+        <Typography sx={{color:"#353535",fontSize:12,fontWeight:400}}>Design by</Typography>
+        <Typography sx={{color:"#353535",fontSize:12,fontWeight:700}}>JEDAİ</Typography>
+
+        </Box>
     </Box>
   )
 }

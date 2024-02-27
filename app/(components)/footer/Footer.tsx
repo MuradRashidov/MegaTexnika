@@ -9,7 +9,7 @@ import CopyRight from './CopyRight'
 const Footer = () => {
   return (
     <Box sx={{backgroundColor:"#FFf0C6"}}>
-  <Container sx={{paddingY:7}}>
+  <Container sx={{paddingTop:5,paddingBottom:2}}>
     <Grid justifyContent="space-between" spacing={2} container>
       <Grid item xs={12} md={3} lg={2} sx={{paddingY:3, display: 'flex', justifyContent: {xs:"center", lg:"start"}}}>
         <FooterLogo />

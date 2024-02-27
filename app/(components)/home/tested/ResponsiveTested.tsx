@@ -1,4 +1,4 @@
-import { Box, Link, Typography } from '@mui/material'
+import { Box, Button, Link, Typography } from '@mui/material'
 import React from 'react'
 
 const ResponsiveTested = () => {
@@ -45,20 +45,12 @@ const ResponsiveTested = () => {
             Lorem Ipsum has been the industry standard dummy text ever since the 1500s,
             when an unknown printer took a galley of type and scrambled
             </Typography>
-            <Link style={{
-                textDecoration:"none",
-                padding:8,
-                color:"#353535",
-                backgroundColor:"#FFC01F",
-                fontSize:"calc(11px + 0.9vw)",
-                fontWeight:700,
-                display:"flex",
-                justifyContent:"center",
-                alignItems:"center",
-                border:"1px solid",
-                borderRadius:30,
-                width:"calc(100px + 5vw)"
-            }} href="/about">Haqqımızda</Link>
+            
+              <Button sx={{width:120}}  color="primary" variant="contained">
+              <Link className="nLink_3" href="/about">
+              Haqqımızda
+              </Link>
+              </Button>
            </Box>
         </Box>
       

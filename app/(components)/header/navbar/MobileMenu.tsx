@@ -69,7 +69,9 @@ const links:ILink[] = [
 
   return (
     <Box sx={{backgroundColor:"white",display:"flex",justifyContent:"center",alignItems:"center"}}>
-      <Button sx={{display:"flex",alignItems:"center"}} onClick={handleOpen}><MenuIcon/></Button>
+      <Button sx={{display:"flex",alignItems:"center",justifyContent:"flex-end"}} onClick={handleOpen}>
+        <MenuIcon sx={{display:"flex",justifyContent:"flex-end"}}/>
+      </Button>
       <Modal
         sx={style}
         open={open}

@@ -44,17 +44,7 @@ const Navbar = () => {
             id:6,
             href:"/contact",
             name:"Əlaqə"
-        },
-        {
-            id:7,
-            href:"/register",
-            name:"Register"
-        },
-        {
-            id:8,
-            href:"/login",
-            name:"Login"
-        },
+        }
     ]
     const pathname = usePathname();
     //console.log(pathname);
@@ -70,7 +60,7 @@ const Navbar = () => {
         }}>
             <Box>
                
-                <Image alt="logo" width={200} height={40} src="/images/logo.png"/>
+                <Image  alt="logo" width={150} height={40} src="/images/logo.png"/>
             </Box>
             <Box sx={{display:{
                 width:"60%",

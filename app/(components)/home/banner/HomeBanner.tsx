@@ -1,7 +1,8 @@
-import { Box, Container, Link, Stack, Typography } from '@mui/material'
+import { Box, Container, Stack, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 import ResponsiveHomeBanner from './ResponsiveHomeBanner'
+import Link from 'next/link'
 
 const HomeBanner = () => {
   return (
@@ -23,17 +24,23 @@ const HomeBanner = () => {
                     justifyContent:"space-evenly",
                     paddingY:3
                     }}>
-                    <Typography variant='h3' component='h1'>
+                    <Typography sx={{color:"#596C72",fontWeight:700}} variant='h3' component='h1'>
                        Ağır texnikanızı bizdən satın alın
                     </Typography>
-                    <Typography>
+                    <Typography sx={{color:"#353535",width:"80%",fontWeight:400,fontSize:14}}>
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     Lorem Ipsum has been the industry standard dummy text ever since the 1500s,
                     when an unknown printer took a galley of type and scrambled
                     </Typography>
-                    <Link>Ətraflı</Link>
+                    <Link className="nLink" href="/about">Ətraflı</Link>
                   </Box>
-                  <Box sx={{flex:1}}>
+                  <Box sx={{
+                      flex: 1,
+                      boxShadow: "0px 0px 10px rgba(128, 128, 128, 0.3)",
+                      border:"10px solid #ffffff",
+                      borderRadius: "0px", 
+
+                    }}>
                     <Image layout='responsive' width={400} height={250} src="/images/home/banner.png" alt="banner"/>
                   </Box>
 
@@ -44,6 +51,16 @@ const HomeBanner = () => {
         </Box>
     </Box>
   )
+
+
+
+
+
+
+
+
+
+
 }
 
 export default HomeBanner
