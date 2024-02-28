@@ -21,7 +21,7 @@ console.log(techniques)
   return (
     <Box sx={{marginY:4}}>
         <Container>
-        <Typography sx={{marginY:5}}>Texnikalar</Typography>
+        <Typography sx={{marginY: {xs:2},color:"#596C72",fontSize:30,fontWeight:700}}>Texnikalar</Typography>
         <Grid container spacing={5}>
   {techniques.map((technique: ITechnique, index:any) => (
      

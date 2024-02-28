@@ -112,7 +112,7 @@ const TechniqueById = ({techniqueId}:any) => {
                         <Typography sx={{color:"#FFC01F",fontSize:20,fontWeight:600}}>{searchedTechnique?.monthlyRent} AZN</Typography>
                     </Box>
                     </Box>
-                    <Box>
+                    <Box sx={{display:"flex", justifyContent:"center"}}>
                    
                         {/* <Button onClick={handleClick} sx={{width:"100%,color:"#353535",fontWeight:700"}} variant="contained" color="primary">
                             Günlük icarə et
