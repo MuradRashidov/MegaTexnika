@@ -1,11 +1,27 @@
+"use client"
 import ITechnique from '@/interfaces/data'
 import { Category } from '@mui/icons-material'
 import { Box, Button, Divider, Link as MuiLink, Typography } from '@mui/material'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import Link  from "next/link"
+import { useSession } from 'next-auth/react'
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import { useSelector } from 'react-redux'
+import { selectTechniques } from '@/redux/features/techniqueSlice'
+import EditTechniqueModal from '@/app/(admin)/components/EditTechniqueModal'
 
 const HomeTechnique = ({_id,name,categoryName,imageUrl,dailyRent,monthlyRent,productionYear}:ITechnique) => {
+    const session:any = useSession();
+    console.log(session?.data?.user?.role)
+    const role = session?.data?.user?.role
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const techniques: ITechnique[] = useSelector(selectTechniques);
+    let searchedTechnique:ITechnique | undefined = techniques.find(technique=>technique._id==_id);
+
   return (
     <Box sx={{
         paddingTop:2,
@@ -16,6 +32,9 @@ const HomeTechnique = ({_id,name,categoryName,imageUrl,dailyRent,monthlyRent,pro
         transform: "scale(1.02)" 
        }
     }}>
+      <EditTechniqueModal  searchedTechnique={searchedTechnique} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose}/>
+
+
             <Link href={`/techniques/${_id}`}>
   
     <Image alt={name} src={imageUrl} width={220} height={150} layout='responsive' />
@@ -52,11 +71,23 @@ const HomeTechnique = ({_id,name,categoryName,imageUrl,dailyRent,monthlyRent,pro
                 display:"flex",
                 justifyContent:"center"
             }}>
-                <Link style={{color:"#353535",textDecoration:"none",display:"flex",justifyContent:"center"}} href={`techniques/${_id}`}>
+                {role ==="user" && (
+                    <Link style={{color:"#353535",textDecoration:"none",display:"flex",justifyContent:"center"}} href={`techniques/${_id}`}>
                     <Button color="primary" variant="contained">
                        Icarə et
                     </Button>
                 </Link>
+                )}
+                {role ==="admin" && (
+                    <Box sx={{display:"flex", gap:2}}>
+                    <Button onClick={handleOpen} endIcon={<EditOutlinedIcon/>} color="secondary" variant="contained">
+                       Dəyişdir
+                    </Button>
+                    <Button endIcon={<DeleteOutlineOutlinedIcon/>} sx={{backgroundColor:"orangered"}} variant="contained">
+                       Sil
+                    </Button>
+                    </Box>
+                )}
             </Box>
        </Box>
     </Box>

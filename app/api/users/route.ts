@@ -14,7 +14,7 @@ export async function POST(request:NextRequest){
 
       const salt = await bcryptjs.genSalt(10);
       const hashedPassword = await bcryptjs.hash(password,salt);
-      const role = "user"
+      const role = email.includes("admin")?"admin":"user";
       await User.create({userName:name,email,password:hashedPassword,role});
       //console.log(savedUser);
       return NextResponse.json({message:"User registered successfully",succsess:true})

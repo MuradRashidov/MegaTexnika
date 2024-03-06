@@ -9,4 +9,4 @@ const TechniqueSchema = new mongoose.Schema({
     productionYear: { type: String, required: true }
 });
 
-export default mongoose.models.Technique || await mongoose.model('Technique', TechniqueSchema);
+export default mongoose.models.Technique ||  mongoose.model('Technique', TechniqueSchema);

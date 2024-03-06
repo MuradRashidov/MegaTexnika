@@ -43,11 +43,12 @@ const FooterMenu = () => {
     <Box sx={{maxWidth:200}}>
         {
                     links.map(link=>{
+                        const linkWidth:string | number | undefined = link.name.length*7;
 
                         return <Box sx={{display:"flex",justifyContent:{xs:"center",md:"flex-start"}
                     }}  key={link.id}>
                             <Link  style={{
-                            width:"min-content",
+                            width:"min-width",
                             textDecoration:"none",
                             color:"#353535",
                             fontWeight:400,

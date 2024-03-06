@@ -36,6 +36,26 @@ export const addTechnique = createAsyncThunk('techniques/addTechnique', async (n
     throw error;
   }
 });
+export const updateTechnique = createAsyncThunk('techniques/updateTechnique', async (updatedTechnique: ITechnique) => {
+  try {
+    // const { _id, ...rest } = updatedTechnique;
+    // console.log("rest...",rest)
+    const response = await axios.put<ITechnique>(`/api/techniques`, updatedTechnique);
+    return response.data;
+  } catch (error:any) {
+    console.log(error.message);
+    throw error;
+  }
+});
+export const deleteTechnique = createAsyncThunk('techniques/deleteTechnique', async (id: string) => {
+  try {
+    await axios.delete(`/api/techniques/${id}`);
+    return id;
+  } catch (error:any) {
+    console.log(error.message);
+    throw error;
+  }
+});
 
 const techniquesSlice:any = createSlice({
   name: 'techniques',
@@ -61,7 +81,18 @@ const techniquesSlice:any = createSlice({
       .addCase(addTechnique.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message ?? 'An error occurred';
-      });
+      })
+      .addCase(updateTechnique.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        const index = state.techniques.findIndex(tech => tech._id === action.payload._id);
+        if (index !== -1) {
+          state.techniques[index] = action.payload;
+        }
+      })
+      .addCase(deleteTechnique.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.techniques = state.techniques.filter(tech => tech._id !== action.payload);
+      })
   },
 });
 

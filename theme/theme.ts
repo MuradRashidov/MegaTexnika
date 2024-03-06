@@ -23,7 +23,7 @@ const theme = createTheme({
           fontFamily:'Roboto, sans-serif',
           color:"#FFC01F",
           fontSize: '1.75rem',
-          fontWeight: 500,
+          fontWeight: 600,
         },
       }
     },

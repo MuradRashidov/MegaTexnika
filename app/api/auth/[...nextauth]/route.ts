@@ -37,7 +37,18 @@ const handler = NextAuth({
         }),
         Google({
             clientId:process.env.GOOGLE_CLIENT_ID ?? "",
-            clientSecret:process.env.GOOGLE_CLIENT_SECRET ?? ""
+            clientSecret:process.env.GOOGLE_CLIENT_SECRET ?? "",
+            async profile(profile){
+                await connectDB();
+                const excistedUser = await User.findOne({email:profile.email});
+                console.log("profile___",profile)
+                return {
+                    ...profile,
+                    id:profile.sub,
+                    role:excistedUser.role,
+                    image:profile.picture
+                };
+            }
         })
     ],
     session:{
@@ -50,7 +61,8 @@ const handler = NextAuth({
             if(user){
                 token.email = user.email;
                 token.name = user.userName || user.name;
-                token.role = user.role
+                token.role = user.role,
+                token.image = user.image
 
             }
             return token
@@ -60,6 +72,7 @@ const handler = NextAuth({
                 session.user.email = token.email,
                 session.user.name = token.name,
                 session.user.role = token.role
+                session.user.image = token.image
             }
             return session
         },
@@ -74,7 +87,7 @@ const handler = NextAuth({
                         console.log(excistedUser)
                         return excistedUser
                     }
-                    const newUser = {userName:name,email,role:"admin"};
+                    const newUser = {userName:name,email,role:"user"};
                     await User.create(newUser);
                     return newUser;
                 } catch (error) {

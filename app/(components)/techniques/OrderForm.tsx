@@ -12,9 +12,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: {xs:"80%",md:"50%"},
+  width: {xs:"99%",md:"50%"},
   bgcolor: 'background.paper',
-  border: '2px solid',
   p: 4,
 };
 const modalStyle = {
@@ -23,10 +22,9 @@ const modalStyle = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "98%",
+    width: "100%",
     height:{xs:"100%"},
     bgcolor: 'transparent',
-    border: '1px solid',
     p: 4,
   };
 
