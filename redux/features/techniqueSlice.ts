@@ -88,7 +88,8 @@ const techniquesSlice:any = createSlice({
         if (index !== -1) {
           //state.techniques[index] = action.payload;
           state.techniques = state.techniques.filter(tech => tech._id !== action.payload._id);
-          state.techniques.push(action.payload);
+           state.techniques = [...state.techniques,action.payload]
+           //state.techniques.push(action.payload);
 
           
         }

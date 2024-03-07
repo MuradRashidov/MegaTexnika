@@ -64,6 +64,7 @@ const EditTechniqueModal = ({open,setOpen,handleOpen,handleClose,searchedTechniq
       monthlyRent: 0,
       productionYear: 0
     });
+    handleClose();
   };
   return (
     <Container>
