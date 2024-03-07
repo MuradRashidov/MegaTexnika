@@ -40,9 +40,9 @@ export const PUT = async (request: NextRequest) => {
 
 export const DELETE = async (request: NextRequest) => {
    try {
-       const { id } = await request.json();
+       const { _id } = await request.json();
        await connectDB();
-       const deletedTechnique = await Technique.findByIdAndDelete(id);
+       const deletedTechnique = await Technique.findByIdAndDelete(_id);
        
        if (!deletedTechnique) {
            return new NextResponse(JSON.stringify({ message: "Technique not found" }), { status: 404 });

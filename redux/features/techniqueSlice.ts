@@ -86,7 +86,11 @@ const techniquesSlice:any = createSlice({
         state.status = 'succeeded';
         const index = state.techniques.findIndex(tech => tech._id === action.payload._id);
         if (index !== -1) {
-          state.techniques[index] = action.payload;
+          //state.techniques[index] = action.payload;
+          state.techniques = state.techniques.filter(tech => tech._id !== action.payload._id);
+          state.techniques.push(action.payload);
+
+          
         }
       })
       .addCase(deleteTechnique.fulfilled, (state, action) => {
