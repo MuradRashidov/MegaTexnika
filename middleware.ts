@@ -22,9 +22,13 @@ export async function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL("/",request.nextUrl));
 
     }
-    if(!adminPath && !publicPath && token?.role !== "user"){
+   else if(!adminPath && !publicPath && token?.role !== "user"){
         return NextResponse.redirect(new URL("/createtechnique",request.nextUrl));
 
+    }
+    else{
+        return NextResponse.redirect(new URL("/",request.nextUrl));
+ 
     }
 
 }

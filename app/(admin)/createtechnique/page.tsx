@@ -7,7 +7,8 @@ import { useAppDispatch } from '@/redux/store';
 import { useRouter } from 'next/navigation';
 
 
-
+// Client Id 934100220551-6459ofrkcn2eisq37tkd7qlu1p5djd02.apps.googleusercontent.com
+//Client secret  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
 const AddTechniqueForm = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
