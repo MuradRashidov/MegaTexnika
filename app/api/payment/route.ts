@@ -27,7 +27,7 @@ console.log(phoneNumber,email,fullName,companyName);
         },
     }],
     mode: "payment",
-    success_url: "http://localhost:3000",
+    success_url: "https://megatexnika-git-main-muradrashidovs-projects.vercel.app/success",
     cancel_url: "http://localhost:3000/about",
      metadata:{
          fullName,
