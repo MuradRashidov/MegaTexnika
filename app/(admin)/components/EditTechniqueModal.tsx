@@ -8,6 +8,7 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { useAppDispatch } from '@/redux/store';
 import { addTechnique, updateTechnique } from '@/redux/features/techniqueSlice';
+import { useRouter } from 'next/navigation';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -30,6 +31,7 @@ const modalStyle = {
     bgcolor: 'transparent',
   };
 const EditTechniqueModal = ({open,setOpen,handleOpen,handleClose,searchedTechnique}:any) => {
+    const router = useRouter();
     const dispatch = useAppDispatch();
   const [formData, setFormData] = useState({
     name: searchedTechnique.name,
@@ -65,6 +67,7 @@ const EditTechniqueModal = ({open,setOpen,handleOpen,handleClose,searchedTechniq
       productionYear: 0
     });
     handleClose();
+    router.push("/admintechniques")
   };
   return (
     <Container>

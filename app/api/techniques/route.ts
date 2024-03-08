@@ -40,7 +40,9 @@ export const PUT = async (request: NextRequest) => {
 
 export const DELETE = async (request: NextRequest) => {
    try {
-       const { _id } = await request.json();
+       const  _id  = await request.json();
+       console.log(_id);
+       
        await connectDB();
        const deletedTechnique = await Technique.findByIdAndDelete(_id);
        

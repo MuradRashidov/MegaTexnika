@@ -9,12 +9,14 @@ import { useSession } from 'next-auth/react'
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { useSelector } from 'react-redux'
-import { selectTechniques } from '@/redux/features/techniqueSlice'
+import { deleteTechnique, selectTechniques } from '@/redux/features/techniqueSlice'
 import EditTechniqueModal from '@/app/(admin)/components/EditTechniqueModal'
+import { useAppDispatch } from '@/redux/store'
 
 const HomeTechnique = ({_id,name,categoryName,imageUrl,dailyRent,monthlyRent,productionYear}:ITechnique) => {
+    const dispatch = useAppDispatch();
     const session:any = useSession();
-    console.log(session?.data?.user?.role)
+    //console.log(session?.data?.user?.role)
     const role = session?.data?.user?.role
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -83,7 +85,17 @@ const HomeTechnique = ({_id,name,categoryName,imageUrl,dailyRent,monthlyRent,pro
                     <Button onClick={handleOpen} endIcon={<EditOutlinedIcon/>} color="secondary" variant="contained">
                        Dəyişdir
                     </Button>
-                    <Button endIcon={<DeleteOutlineOutlinedIcon/>} sx={{backgroundColor:"orangered"}} variant="contained">
+                    <Button
+                     endIcon={<DeleteOutlineOutlinedIcon/>
+                     } 
+                     sx={{backgroundColor:"orangered"}} 
+                     variant="contained"
+                     onClick={(e:any)=>{
+                           e.preventDefault();
+                           console.log(_id);
+                           dispatch(deleteTechnique(_id||""));
+                     }}
+                     >
                        Sil
                     </Button>
                     </Box>

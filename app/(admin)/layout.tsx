@@ -8,6 +8,7 @@ import theme from "@/theme/theme";
 import SideMenu from "./components/SideMenu";
 import UserInfo from "./components/UserInfo";
 import Sidebar from "./components/Sidebar";
+import AdminMobileMenu from "./components/AdninMobileMenu";
 const inter = Inter({ subsets: ["latin"] });
 
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -23,13 +24,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Box sx={{display:"flex",gap:2,height:"100%"}}>
-        <Box sx={{flex:2}}>
+    <Box>
+      <Box sx={{display:{xs:"block",md:"none"}}}>
+           <AdminMobileMenu/>
+        </Box>
+        <Box sx={{display:"flex",gap:2,height:"100%"}}>
+        
+        <Box sx={{flex:{md:2,xs:0},display:{xs:"none",lg:"block"}}}>
             <Sidebar/>
         </Box>
-        <Box sx={{flex:10}}>
+        <Box sx={{flex:{md:10,xs:12}}}>
             {children}
         </Box>
         </Box>
+    </Box>
+    
   );
 }

@@ -47,12 +47,20 @@ export const updateTechnique = createAsyncThunk('techniques/updateTechnique', as
     throw error;
   }
 });
-export const deleteTechnique = createAsyncThunk('techniques/deleteTechnique', async (id: string) => {
+export const deleteTechnique = createAsyncThunk('techniques/deleteTechnique', async (_id: any) => {
+  console.log("idmfdsl",_id);
+ 
   try {
-    await axios.delete(`/api/techniques/${id}`);
-    return id;
+    //const response =  await axios.delete(`/api/techniques`,_id);
+   
+    const response = await axios.delete(`/api/techniques/${_id}`);
+
+    
+    return response.data;
   } catch (error:any) {
-    console.log(error.message);
+    console.log(error);
+    console.log("error is in try");
+
     throw error;
   }
 });

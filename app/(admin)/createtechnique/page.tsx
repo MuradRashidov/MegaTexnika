@@ -4,10 +4,12 @@ import { useDispatch } from 'react-redux';
 import { Button, TextField, FormControl, InputLabel, Select, MenuItem, makeStyles, Grid, Box, Typography } from '@mui/material';
 import { addTechnique } from '@/redux/features/techniqueSlice';
 import { useAppDispatch } from '@/redux/store';
+import { useRouter } from 'next/navigation';
 
 
 
 const AddTechniqueForm = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState({
     name: '',
@@ -37,15 +39,16 @@ const AddTechniqueForm = () => {
       monthlyRent: 0,
       productionYear: 0
     });
+     router.push("/admintechniques")
   };
 
   return (
     <Box>
-      <Box sx={{marginX:10,marginTop:15}}>
+      <Box sx={{marginX:{xs:3,md:10},marginTop:{xs:3,md:15}}}>
           <Typography sx={{color:"#596C72",fontWeight:600}}  variant="h4">Yeni məhsul əlavə et</Typography>
         </Box>
     
-    <Box sx={{height:"100%",paddingX:10,paddingY:5,display:"flex",flexDirection:"column",justifyContent:"flex-start",alignItems:"center"}}>
+    <Box sx={{height:"100%",marginX:{xs:3,md:10},paddingY:5,display:"flex",flexDirection:"column",justifyContent:"flex-start",alignItems:"center"}}>
         
         <form onSubmit={handleSubmit}>
           <Grid spacing={4} justifyContent="center" alignItems="center" container>
