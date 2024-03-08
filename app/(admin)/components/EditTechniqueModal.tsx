@@ -54,6 +54,7 @@ const EditTechniqueModal = ({open,setOpen,handleOpen,handleClose,searchedTechniq
     e.preventDefault();
     try {
         dispatch(updateTechnique({_id:searchedTechnique._id,...formData}));
+        router.push("/admintechniques")
 
     } catch (error:any) {
         console.log(error.message)
@@ -67,7 +68,6 @@ const EditTechniqueModal = ({open,setOpen,handleOpen,handleClose,searchedTechniq
       productionYear: 0
     });
     handleClose();
-    router.push("/admintechniques")
   };
   return (
     <Container>

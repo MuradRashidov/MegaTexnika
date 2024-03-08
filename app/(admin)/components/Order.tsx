@@ -50,19 +50,21 @@ const Order = ({fullName,companyName,email,phoneNumber,orderAmount,techniqueId}:
   const dispatch = useAppDispatch();
 
     const techniques:ITechnique[] = useSelector(selectTechniques);
+    let searchedTechnique:ITechnique | undefined = techniques.find(technique=>technique._id==techniqueId);
+    //const [imgUrl,setImgUrl] = useState(searchedTechnique?.imageUrl)
     useEffect(() => {
       dispatch(fetchTechniques());
+      //setImgUrl(searchedTechnique?.imageUrl)
     }, [dispatch]);
     console.log(techniques)
-    let searchedTechnique:ITechnique | undefined = techniques.find(technique=>technique._id==techniqueId);
-    const [imgUrl,setImgUrl] = useState(searchedTechnique?.imageUrl)
-    console.log('KELKW',imgUrl)
+    
+    //console.log('KELKW',imgUrl)
     return (
       
                 <StyledTableRow >
                   <StyledTableCell align="left">{searchedTechnique?.name}</StyledTableCell> 
                   <StyledTableCell align="left">
-                    <Image alt={searchedTechnique?.name || ""} src={imgUrl || ""} width={50} height={40}/>
+                    <Image alt={searchedTechnique?.name || ""} src={searchedTechnique?.imageUrl || ""} width={50} height={40}/>
                   </StyledTableCell> 
                   <StyledTableCell align="left">{fullName}</StyledTableCell> 
                   <StyledTableCell align="left">{companyName}</StyledTableCell>
