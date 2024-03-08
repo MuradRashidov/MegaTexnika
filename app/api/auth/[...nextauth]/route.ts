@@ -85,11 +85,11 @@ const handler = NextAuth({
                     if(excistedUser){
                         console.log("********************************")
                         console.log(excistedUser)
-                        return excistedUser
+                        return user
                     }
                     const newUser = {userName:name,email,role:"user"};
                     await User.create(newUser);
-                    return newUser;
+                    return user;
                 } catch (error) {
                  console.log(error);
                  
