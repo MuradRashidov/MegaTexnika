@@ -64,7 +64,7 @@ export async function middleware(request: NextRequest) {
     }
 
     if (userPaths.includes(path) && token?.role !== "user") {
-        return NextResponse.redirect(new URL("/", request.nextUrl));
+        return NextResponse.redirect(new URL("/admintechniques", request.nextUrl));
     }
 
     return null; // Allow the request to continue if none of the conditions are met
