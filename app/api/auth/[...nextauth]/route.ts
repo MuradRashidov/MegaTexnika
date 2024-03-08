@@ -45,7 +45,7 @@ const handler = NextAuth({
                 return {
                     ...profile,
                     id:profile.sub,
-                    role:excistedUser.role,
+                    role:excistedUser.role || "user",
                     image:profile.picture
                 };
             }
