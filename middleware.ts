@@ -1,23 +1,23 @@
-// import { getToken } from 'next-auth/jwt';
-// import { NextResponse } from 'next/server';
-// import type { NextRequest } from 'next/server';
+import { getToken } from 'next-auth/jwt';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-// export async function middleware(request: NextRequest) {
-//     const path = request.nextUrl.pathname;
-//     const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
-//     console.log("token",token)
-//     const publicPath = path === "/login" ||path === "/register";
-//     const adminPath = path === "/createtechnique" || path === "/orders" || path === "/admintechniques";
+export async function middleware(request: NextRequest) {
+    const path = request.nextUrl.pathname;
+    const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
+    console.log("token",token)
+    const publicPath = path === "/login" ||path === "/register";
+    const adminPath = path === "/createtechnique" || path === "/orders" || path === "/admintechniques";
    
 
     
-//     if (publicPath && token) {
-//             return NextResponse.redirect(new URL("/",request.nextUrl));
+    if (publicPath && token) {
+            return NextResponse.redirect(new URL("/",request.nextUrl));
         
-//     }
-//     if (!publicPath && !token) {
-//         return NextResponse.redirect(new URL("/register",request.nextUrl));
-//     }
+    }
+    if (!publicPath && !token) {
+        return NextResponse.redirect(new URL("/register",request.nextUrl));
+    }
 //     if(adminPath && token?.role !== "admin"){
 //         return NextResponse.redirect(new URL("/",request.nextUrl));
 
@@ -31,11 +31,11 @@
  
 //     }
 
-// }
+}
 
-// export const config = {
+export const config = {
     
-//     matcher: [
-//         "/login","/register","/","/about","/home","/techniques","/createtechnique","/orders","/admintechniques"
-//     ]
-// };
+    matcher: [
+        "/login","/register","/","/about","/home","/techniques","/createtechnique","/orders","/admintechniques"
+    ]
+};
