@@ -18,18 +18,18 @@ export async function middleware(request: NextRequest) {
     if (!publicPath && !token) {
         return NextResponse.redirect(new URL("/register",request.nextUrl));
     }
-//     if(adminPath && token?.role !== "admin"){
-//         return NextResponse.redirect(new URL("/",request.nextUrl));
+    if(adminPath && token?.role === "user"){
+        return NextResponse.redirect(new URL("/",request.nextUrl));
 
-//     }
-//    else if(!adminPath && !publicPath && token?.role !== "user"){
-//         return NextResponse.redirect(new URL("/createtechnique",request.nextUrl));
+    }
+   else if(!adminPath && !publicPath && token?.role === "admin"){
+        return NextResponse.redirect(new URL("/createtechnique",request.nextUrl));
 
-//     }
-//     else{
-//         return NextResponse.redirect(new URL("/",request.nextUrl));
+    }
+    else{
+        return NextResponse.redirect(new URL("/",request.nextUrl));
  
-//     }
+    }
 
 }
 
