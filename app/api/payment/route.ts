@@ -27,8 +27,8 @@ console.log(phoneNumber,email,fullName,companyName);
         },
     }],
     mode: "payment",
-    success_url: "/success",
-    cancel_url: "/about",
+    success_url: "http://localhost:3000",
+    cancel_url: "http://localhost:3000/about",
      metadata:{
          fullName,
          companyName,
