@@ -42,10 +42,17 @@ const handler = NextAuth({
                 await connectDB();
                 const excistedUser = await User.findOne({email:profile.email});
                 console.log("profile___",profile)
+                let role;
+                if(excistedUser){
+                    role = excistedUser.role
+                }
+                else{
+                    role = "user"
+                }
                 return {
                     ...profile,
                     id:profile.sub,
-                    role:excistedUser.role || "user",
+                    role:role,
                     image:profile.picture
                 };
             }
