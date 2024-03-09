@@ -16,7 +16,7 @@ import { fetchTechniques, selectTechniques } from '@/redux/features/techniqueSli
 import { useAppDispatch } from '@/redux/store';
 import Image from 'next/image';
 
-const StyledTableCell = styled(TableCell)(({ theme }:any) => ({
+const StyledTableCell:any = styled(TableCell)(({ theme }:any) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
@@ -49,13 +49,14 @@ const Order = ({fullName,companyName,email,phoneNumber,orderAmount,techniqueId}:
 //    },[])
   const dispatch = useAppDispatch();
 
-    const techniques:ITechnique[] = useSelector(selectTechniques);
-    let searchedTechnique:ITechnique | undefined = techniques.find(technique=>technique._id==techniqueId);
+    
     //const [imgUrl,setImgUrl] = useState(searchedTechnique?.imageUrl)
     useEffect(() => {
       dispatch(fetchTechniques());
       //setImgUrl(searchedTechnique?.imageUrl)
     }, [dispatch]);
+    const techniques:ITechnique[] = useSelector(selectTechniques);
+    let searchedTechnique:ITechnique | undefined = techniques.find(technique=>technique._id==techniqueId);
     console.log(techniques)
     
     //console.log('KELKW',imgUrl)
