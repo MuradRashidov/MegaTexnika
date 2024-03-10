@@ -43,8 +43,11 @@ const Orders:React.FC = () => {
     };
 
     useEffect(() => {
+      setInterval(()=>{
         fetchOrders();
-    }, []); // Boş bağımlılık dizisi, yalnızca bileşen ilk render edildiğinde çalışmasını sağlar
+
+      },60000)
+    }, [orders]); 
 
     return (
         <Container>
