@@ -32,7 +32,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const Orders = () => {
+const Orders:React.FC = () => {
     const [orders, setOrders] = useState([]);
 
     const fetchOrders = () => {
