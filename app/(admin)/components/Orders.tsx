@@ -71,7 +71,7 @@ const Orders:React.FC = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody sx={{ minWidth: 500, maxWidth: { xs: 500, md: 900, lg: 1100 } }}>
-                        {orders.map((order: any, index: number) => {
+                        {orders.reverse().map((order: any, index: number) => {
                             return <Order key={index} {...order} />
                         })}
                     </TableBody>
