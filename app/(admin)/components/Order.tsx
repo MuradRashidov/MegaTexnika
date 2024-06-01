@@ -52,10 +52,10 @@ const Order = ({fullName,companyName,email,phoneNumber,orderAmount,techniqueId}:
     
     //const [imgUrl,setImgUrl] = useState(searchedTechnique?.imageUrl)
     useEffect(() => {
-  setInterval(()=>{
+  
     dispatch(fetchTechniques());
 
-  },60000,)
+ 
       //setImgUrl(searchedTechnique?.imageUrl)
     }, [dispatch]);
     const techniques:ITechnique[] = useSelector(selectTechniques);

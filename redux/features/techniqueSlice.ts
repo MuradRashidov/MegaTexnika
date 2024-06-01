@@ -19,8 +19,9 @@ const initialState: TechniquesState = {
 //const endPoint = "http://localhost:3000";
 export const fetchTechniques = createAsyncThunk<ITechnique[],void>('techniques/fetchTechniques', async () => {
   try {
-    const response = await axios.get<ITechnique[]>(`/api/techniques`);
-    return response.data;
+    const response= await fetch(`/api/techniques`,{cache:"no-cache"});
+    const data = await response.json();
+    return data;
   } catch (error:any) {
     console.log(error.message);
     throw error;
