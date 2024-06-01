@@ -60,7 +60,9 @@ const Navbar = () => {
         }}>
             <Box>
                
+                <Link href="/">
                 <Image  alt="logo" width={150} height={40} src="/images/logo.png"/>
+                </Link>
             </Box>
             <Box sx={{display:{
                 width:"60%",

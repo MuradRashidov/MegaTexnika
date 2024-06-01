@@ -37,16 +37,15 @@ const Orders:React.FC = () => {
     const [orders, setOrders] = useState([]);
 
     const fetchOrders = () => {
-        axios.get("/api/orders")
-            .then(({ data }) => setOrders(data))
+        fetch("/api/orders",{cache:"no-cache"})
+            .then(({ data }:any) => setOrders(data))
             .catch(error => console.error('Error fetching orders:', error));
     };
 
     useEffect(() => {
-      setInterval(()=>{
+      
         fetchOrders();
 
-      },60000)
     }, [orders]); 
 
     return (
