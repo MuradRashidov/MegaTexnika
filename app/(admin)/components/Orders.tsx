@@ -37,20 +37,22 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const Orders:React.FC = () => {
     const [orders, setOrders] = useState([]);
 
-    const fetchOrders = () => {
-        fetch("/api/orders",{
-          headers:{
-            method:"GET"
-          },
-          cache:"no-cache"})
-            .then(({ data }:any) => setOrders(data))
-            .catch(error => console.error('Error fetching orders:', error));
+    const fetchOrders = async () => {
+        // fetch("/api/orders",{
+        //   headers:{
+        //     method:"GET"
+        //   },
+        //   cache:"no-cache"})
+        //     .then((data) => console.log(data))
+        //     .catch(error => console.error('Error fetching orders:', error));
+        const res = await fetch("/api/orders",{method:"GET", cache:"no-cache"})
+        const data = await res.json()
+       // console.log(data)
+       setOrders(data)
     };
 
     useEffect(() => {
-      
-        fetchOrders();
-
+        fetchOrders()
     }, [orders]); 
 
     return (
