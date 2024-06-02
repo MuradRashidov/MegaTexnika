@@ -19,7 +19,7 @@ const initialState: TechniquesState = {
 //const endPoint = "http://localhost:3000";
 export const fetchTechniques = createAsyncThunk<ITechnique[],void>('techniques/fetchTechniques', async () => {
   try {
-    const response= await fetch(`/api/techniques`,{cache:"no-cache"});
+    const response= await fetch(`/api/techniques`,{cache:"no-store"});
     const data = await response.json();
     return data;
   } catch (error:any) {

@@ -45,7 +45,7 @@ const Orders:React.FC = () => {
         //   cache:"no-cache"})
         //     .then((data) => console.log(data))
         //     .catch(error => console.error('Error fetching orders:', error));
-        const res = await fetch("/api/orders",{method:"GET", cache:"no-cache"})
+        const res = await fetch("/api/orders",{method:"GET", cache:"no-store"})
         const data = await res.json()
        // console.log(data)
        setOrders(data)
